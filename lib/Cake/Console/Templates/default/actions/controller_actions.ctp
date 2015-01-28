@@ -23,6 +23,7 @@
  * @return void
  */
 	public function <?php echo $admin ?>index() {
+		$this->layout='admin';
 		$this-><?php echo $currentModelName ?>->recursive = 0;
 		$this->set('<?php echo $pluralName ?>', $this->Paginator->paginate());
 	}
@@ -35,6 +36,7 @@
  * @return void
  */
 	public function <?php echo $admin ?>view($id = null) {
+		$this->layout='admin';
 		if (!$this-><?php echo $currentModelName; ?>->exists($id)) {
 			throw new NotFoundException(__('Invalid <?php echo strtolower($singularHumanName); ?>'));
 		}
@@ -49,6 +51,7 @@
  * @return void
  */
 	public function <?php echo $admin ?>add() {
+		$this->layout='admin';
 		if ($this->request->is('post')) {
 			$this-><?php echo $currentModelName; ?>->create();
 			if ($this-><?php echo $currentModelName; ?>->save($this->request->data)) {
@@ -88,6 +91,7 @@
  * @return void
  */
 	public function <?php echo $admin; ?>edit($id = null) {
+		$this->layout='admin';
 		if (!$this-><?php echo $currentModelName; ?>->exists($id)) {
 			throw new NotFoundException(__('Invalid <?php echo strtolower($singularHumanName); ?>'));
 		}

@@ -7,13 +7,13 @@
 					<ul class="breadcrumb">
 						<li>
 							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="<?php echo "<?php echo \$this->Html->url('/'); ?>"; ?>">Principal</a>
+							<a href="<?php echo $this->Html->url('/'); ?>">Principal</a>
 						</li>
 
 						<li>
-							<a href="<?php echo "<?php echo \$this->Html->url('/{$controllerName}/'); ?>"; ?>"><?php echo $pluralHumanName; ?></a>
+							<a href="<?php echo $this->Html->url('//'); ?>">Specific Cards</a>
 						</li>
-						<li class="active"><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></li>
+						<li class="active"><?php echo __('Add Specific Card'); ?></li>
 					</ul><!-- /.breadcrumb -->
 
 				</div>
@@ -24,11 +24,9 @@
 					<div class="page-content-area">
 						<div class="page-header">
 							<h1>
-								<?php echo $pluralHumanName; ?>
-								<small>
+								Specific Cards								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									<?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?>
-								</small>
+									<?php echo __('Add Specific Card'); ?>								</small>
 							</h1>
 						</div><!-- /.page-header -->
 
@@ -36,62 +34,57 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								
-								<?php echo "<?php echo \$this->Form->create('{$modelClass}',array('class'=>'form-horizontal','role'=>'form')); ?>\n"; ?>
+								<?php echo $this->Form->create('SpecificCard',array('class'=>'form-horizontal','role'=>'form')); ?>
 									
-								<?php
 									
-									if (!empty($associations['hasAndBelongsToMany'])) {
-										foreach ($associations['hasAndBelongsToMany'] as $assocName => $assocData) {
-								?>	
 									<!-- #section:elements.form -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
-											<?php		
-												echo $assocName;
-											?>
-										</label>
+											edition_id										</label>
 
 										<div class="col-sm-9">
-											<input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
-								<?php		
-									echo "<?php echo \$this->Form->input('{$assocName}',array('div'=>false,'label'=>false,'id'=>'form-field-select-3','data-placeholder'=>'Escoja un(a){$assocName}','class'=>'chosen-select')); ?>";
-								?>	
+								<?php echo $this->Form->input('edition_id',array('div'=>false,'label'=>false,'id'=>'form-field-1','placeholder'=>'edition_id','class'=>'col-xs-10 col-sm-5')); ?>	
 										</div>
 									</div>
 									<!-- /section:elements.form -->
 									<div class="space-4"></div>
-								<?php
-										}
-									}
-									foreach ($fields as $field) {		
-										if (strpos($action, 'add') !== false && $field === $primaryKey) {
-											continue;
-										} elseif (!in_array($field, array('created', 'modified', 'updated'))) {
-								?>	
+									
 									<!-- #section:elements.form -->
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
-											<?php		
-												echo $field;
-											?>
-										</label>
+											card_id										</label>
 
 										<div class="col-sm-9">
-								<?php
-											echo "<?php echo \$this->Form->input('{$field}',array('div'=>false,'label'=>false,'id'=>'form-field-1','placeholder'=>'{$field}','class'=>'col-xs-10 col-sm-5')); ?>";
-								?>	
+								<?php echo $this->Form->input('card_id',array('div'=>false,'label'=>false,'id'=>'form-field-1','placeholder'=>'card_id','class'=>'col-xs-10 col-sm-5')); ?>	
 										</div>
 									</div>
 									<!-- /section:elements.form -->
 									<div class="space-4"></div>
-								<?php
-										}
-									}
 									
+									<!-- #section:elements.form -->
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+											artist										</label>
+
+										<div class="col-sm-9">
+								<?php echo $this->Form->input('artist',array('div'=>false,'label'=>false,'id'=>'form-field-1','placeholder'=>'artist','class'=>'col-xs-10 col-sm-5')); ?>	
+										</div>
+									</div>
+									<!-- /section:elements.form -->
+									<div class="space-4"></div>
 									
-									
-								?>
-									<div class="clearfix form-actions">
+									<!-- #section:elements.form -->
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">
+											flavour_text										</label>
+
+										<div class="col-sm-9">
+								<?php echo $this->Form->input('flavour_text',array('div'=>false,'label'=>false,'id'=>'form-field-1','placeholder'=>'flavour_text','class'=>'col-xs-10 col-sm-5')); ?>	
+										</div>
+									</div>
+									<!-- /section:elements.form -->
+									<div class="space-4"></div>
+																	<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
 											<button class="btn btn-info" type="submit">
 												<i class="ace-icon fa fa-check bigger-110"></i>
@@ -107,8 +100,7 @@
 									</div>
 
 									
-								<?php echo "<?php echo \$this->Form->end(); ?>"; ?>
-
+								<?php echo $this->Form->end(); ?>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content-area -->
